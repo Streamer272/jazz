@@ -4,6 +4,10 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.compression.*
 import io.ktor.server.plugins.cors.routing.*
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class GenericResponse(val response: Int)
 
 fun Application.configureHTTP() {
     install(CORS) {

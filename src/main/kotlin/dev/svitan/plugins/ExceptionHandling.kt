@@ -13,6 +13,20 @@ data class HttpException(
     val description: String? = null
 ) : Exception(message)
 
+fun HttpBadRequest(message: String, description: String? = null) =
+    HttpException(
+        HttpStatusCode.BadRequest.value,
+        message,
+        description
+    )
+
+fun HttpNotFound(message: String, description: String? = null) =
+    HttpException(
+        HttpStatusCode.NotFound.value,
+        message,
+        description
+    )
+
 data class HttpExceptionResponse(
     val code: Int,
     val path: String,
