@@ -1,11 +1,9 @@
 package dev.svitan
 
+import dev.svitan.plugins.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import dev.svitan.plugins.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
 
 fun main() {
     embeddedServer(
@@ -18,16 +16,10 @@ fun main() {
 
 fun Application.module() {
     configureHTTP()
-//    configureDatabase()
+    configureDatabase()
     configureExceptionHandling()
-//    configureRouting()
-//    configureSockets()
     configureMonitoring()
     configureSerialization()
-
-    routing {
-        get("/hello") {
-            call.respond("Hello World!")
-        }
-    }
+    configureRouting()
+    configureSockets()
 }
